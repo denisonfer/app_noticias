@@ -28,7 +28,7 @@ export const NewsContainer = styled.TouchableOpacity`
 export const NewsTitle = styled.Text`
   font-size: ${normalize(18)}px;
   font-weight: bold;
-  color: ${colors.TITLE_COLOR};
+  color: ${colors.COLOR_RED};
 `;
 
 export const NewsMessage = styled.Text`
@@ -39,7 +39,7 @@ export const NewsMessage = styled.Text`
 
 export const NewsAuthor = styled.Text`
   font-size: ${normalize(12)}px;
-  color: ${colors.COLOR_RED};
+  color: ${colors.TITLE_COLOR};
   margin-bottom: 10px;
 `;
 
