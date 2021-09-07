@@ -26,7 +26,7 @@ export default function AppScreens() {
         <Stack.Screen
           name="CreateNews"
           component={CreateNews}
-          options={{ title: 'Criar Notícia' }}
+          options={({ route }) => ({ title: route.params ? 'Editar Notícia' : 'Criar Notícia' })}
         />
 
         <Stack.Screen
@@ -40,6 +40,9 @@ export default function AppScreens() {
         <Stack.Screen
           name="DetailNews"
           component={DetailNews}
+          options={{
+            title: 'Notícia',
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

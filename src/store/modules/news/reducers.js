@@ -26,6 +26,36 @@ export default function news(state = INITIAL_STATE, action) {
         break;
       }
 
+      case '@news/DELETE_NEWS': {
+        const { news_id } = action.payload;
+
+        const newsIndex = draft.news.findIndex(
+          item => item.id === news_id
+        );
+
+        if (newsIndex >= 0) {
+          draft.news.splice(newsIndex, 1);
+        }
+
+        break;
+      }
+
+      case '@news/REQUEST_UPDATE_NEWS': {
+        draft.loading = true;
+        break;
+      }
+
+      case '@news/SUCCESS_UPDATE_NEWS': {
+        const { newsData, indexOfState } = action.payload;
+
+        draft.loading = false;
+        draft.news[indexOfState].title = newsData.title;
+        draft.news[indexOfState].message = newsData.message;
+        draft.news[indexOfState].author = newsData.author;
+        draft.news[indexOfState].date = newsData.date;
+        break;
+      }
+
       default:
         return state;
     }
