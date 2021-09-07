@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigation } from '@react-navigation/native'
 import * as Yup from 'yup';
@@ -92,59 +92,66 @@ export default function CreateNewsScreen({ route }) {
   }, [report])
 
   return (
-    <ScrollView
-      contentContainerStyle={{ flexGrow: 1 }}
-      showsVerticalScrollIndicator={false}
-      keyboardShouldPersistTaps="handled"
+    <KeyboardAvoidingView
+      enabled
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={{ flex: 1 }}
     >
-      <Container>
-        <Form ref={formRef} onSubmit={(data) => report
-          ? handleUpdateNews(data)
-          : handleCreateNews(data)}
-        >
-          <Input
-            name="title"
-            icon="newspaper"
-            placeholder="Título"
-            autoCapitalize="words"
-            returnKeyType="next"
-            onSubmitEditing={() => messageRef.current.focus()}
-          />
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Container>
+          <Form ref={formRef} onSubmit={(data) => report
+            ? handleUpdateNews(data)
+            : handleCreateNews(data)}
+          >
+            <Input
+              name="title"
+              icon="newspaper"
+              placeholder="Título"
+              autoCapitalize="words"
+              returnKeyType="next"
+              onSubmitEditing={() => messageRef.current.focus()}
+            />
 
-          <Input
-            ref={messageRef}
-            name="message"
-            placeholder="Notícia"
-            message
-          />
+            <Input
+              ref={messageRef}
+              name="message"
+              placeholder="Notícia"
+              message
+            />
 
-          <Input
-            name="author"
-            icon="account-tie"
-            placeholder="Autor"
-            autoCapitalize="words"
-          />
+            <Input
+              name="author"
+              icon="account-tie"
+              placeholder="Autor"
+              autoCapitalize="words"
+            />
 
-          {report ? (
-            <ButtonDefault
-              loading={loading}
-              onPress={() => formRef.current.submitForm()}
-            >
-              Atualizar Notícia
-            </ButtonDefault>
-          ) : (
-            <ButtonDefault
-              loading={loading}
-              onPress={() => formRef.current.submitForm()}
-            >
-              Cadastrar Notícia
-            </ButtonDefault>
-          )}
+            {report ? (
+              <ButtonDefault
+                loading={loading}
+                onPress={() => formRef.current.submitForm()}
+              >
+                Atualizar Notícia
+              </ButtonDefault>
+            ) : (
+              <ButtonDefault
+                loading={loading}
+                onPress={() => formRef.current.submitForm()}
+              >
+                Cadastrar Notícia
+              </ButtonDefault>
+            )}
 
 
-        </Form>
-      </Container>
-    </ScrollView>
+          </Form>
+        </Container>
+      </ScrollView>
+    </KeyboardAvoidingView>
+
 
   );
 

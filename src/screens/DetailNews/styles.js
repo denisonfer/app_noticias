@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 
 import colors from '../../constants/colors'
 import normalize from '../../utils/normalize'
@@ -42,7 +43,7 @@ export const NewsDate = styled.Text`
 `;
 
 export const Divider = styled.View`
-  border: .2px solid gray;
+  border: .4px solid gray;
   width: 100%;
   margin: 15px 0;
 `;
@@ -50,7 +51,7 @@ export const Divider = styled.View`
 export const Footer = styled.View`
   border: .2px solid red;
   background: ${colors.BACKGROUND_COLOR};
-
+  margin-bottom: ${Platform.OS === 'ios' ? '15px' : '0px'}
 `;
 
 export const Button = styled.TouchableOpacity`

@@ -51,8 +51,8 @@ export default function DetailNewsScreen({ route }) {
               <NewsTitle>{report.title}</NewsTitle>
 
               <Row>
-                <NewsAuthor>Autor: {report.author}</NewsAuthor>
-                <NewsDate>Data: {report.date}</NewsDate>
+                <NewsAuthor>{report.author}</NewsAuthor>
+                <NewsDate>{report.date}</NewsDate>
               </Row>
 
               <Divider />

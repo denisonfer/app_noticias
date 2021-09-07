@@ -13,7 +13,6 @@ export const Container = styled.TouchableOpacity`
 `;
 
 export const ButtonText = styled.Text`
-  font-family: 'Montserrat-SemiBold';
   font-size: ${normalize(16)}px;
   color: ${colors.COLOR_WHITE};
 `;
