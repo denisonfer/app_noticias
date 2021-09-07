@@ -1,10 +1,14 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
+import { useDispatch, useSelector } from "react-redux";
 import { Icon } from 'react-native-elements';
-import { useNavigation } from '@react-navigation/native';
+
+
+import { handleShowSearchBar } from "../../store/modules/searchButton/actions";
 
 export default function SearchButton() {
-  const { navigate } = useNavigation();
+  const dispatch = useDispatch();
+  const { isSearchBarVisible } = useSelector(state => state.searchButton)
 
   return (
     <View
@@ -17,7 +21,7 @@ export default function SearchButton() {
       }}
     >
       <TouchableOpacity
-        onPress={() => alert('Buscar')}
+        onPress={() => dispatch(handleShowSearchBar(isSearchBarVisible))}
         style={{
           width: 45,
           height: 45,

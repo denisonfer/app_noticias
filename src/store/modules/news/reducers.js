@@ -18,6 +18,10 @@ export default function news(state = INITIAL_STATE, action) {
 
         draft.loading = false;
         draft.news.push(news);
+        draft.news.sort((a, b) => {
+          return a.id < b.id;
+        })
+
 
         break;
       }

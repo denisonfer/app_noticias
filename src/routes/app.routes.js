@@ -6,18 +6,29 @@ import SearchButton from '../components/SearchButton';
 
 import NewsScreen from '../screens/News';
 import CreateNews from '../screens/CreateNews';
+import DetailNews from '../screens/DetailNews';
 
 const Stack = createNativeStackNavigator()
 
 export default function AppScreens() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="News">
+      <Stack.Navigator
+        initialRouteName="News"
+        screenOptions={{
+          headerStyle: {
+            shadowColor: 'transparent',
+            elevation: 0,
+          },
+          headerTitleAlign: 'center',
+        }}>
+
         <Stack.Screen
           name="CreateNews"
           component={CreateNews}
           options={{ title: 'Criar Notícia' }}
         />
+
         <Stack.Screen
           name="News"
           component={NewsScreen}
@@ -25,6 +36,11 @@ export default function AppScreens() {
             title: 'Notícias',
             headerRight: props => <SearchButton {...props} />
           }} />
+
+        <Stack.Screen
+          name="DetailNews"
+          component={DetailNews}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )

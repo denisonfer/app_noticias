@@ -5,7 +5,6 @@ import normalize from '../../utils/normalize'
 
 export const Container = styled.View`
   flex: 1;
-  justify-content: center;
   align-items: center;
   background: ${colors.BACKGROUND_COLOR};
   padding: 20px;
